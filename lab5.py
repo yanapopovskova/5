@@ -11,32 +11,29 @@ def recursive_f(n):  # рекурсивное решение
         return 2
     else:
         return recursive_g(n - 1)
-
 def recursive_g(n):  # рекурсивное решение
     if n == 1:
         return 1
     else:
         return recursive_f(n - 1)
 
-
 def iterative_f(n):
+    fn = [2] * (n + 1)
     gn = [1] * (n + 1)
-    fn = [1] * (n + 1)
-    for i in range(3, n + 1):
+    for i in range(2, n + 1):
         fn[i] = gn[i - 1]
         gn[i] = fn[i - 1]
     return fn[n]
+
 try:
     print("Введите натуральное число n >=2: ")
     n = int(input())
     while n < 2:  # ошибка в случае введения не натурального числа
         n = int(input("\nВы ввели число меньше 2"))
-
     k = 1
-
-    if n > 25:
+    if n > 40 and k != 0:
         k = int(input(
-            "\nЧисло n > 25. Продолжить? Это может занять время. (Да: 1 / Нет: 0):\n"))
+            "\nЧисло n > 40. Продолжить? Это может занять время. (Да: 1 / Нет: 0):\n"))
     while k != 0 and k != 1:
         k = int(input("\nВы ввели не 1 и не 0. Введите 1, продолжить или 0, завершить программу:\n"))
 
@@ -84,4 +81,3 @@ except ValueError:
 
 except RecursionError:
     print("\nВы превысили относительную максимальную глубину рекурсии.")
-
